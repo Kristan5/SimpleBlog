@@ -2,8 +2,8 @@
 <%= form_with model: @article, local: true do |form| %>
  
     <% if @article.errors.any? %>
-      <div id="error_explanation">
-        <h2>
+      <div id="error_explanation" style = "color: red;">
+        <h5>
           <%= pluralize(@article.errors.count, "error") %> prohibited
           this article from being saved:
         </h2>
