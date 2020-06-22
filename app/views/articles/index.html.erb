@@ -1,10 +1,17 @@
 <h1>Listing Articles</h1>
  
 <%= link_to 'New Article', new_article_path %> | 
-<%= link_to 'Home', welcome_index_path  %>
+<%= link_to 'Home', welcome_index_path  %> | 
+
+<%= form_with url: "/search", method: "get", local: true  do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Title</th>
     <th>Text</th>
     <th colspan="2"></th>
@@ -12,6 +19,8 @@
  
   <% @articles.each do |article| %>
     <tr>
+
+      <td><%= article.id %></td>
       <td><%= article.title %></td>
       <td><%= article.text %></td>
       <td><button><%= link_to 'Show', article_path(article) %></button></td>

@@ -24,6 +24,11 @@ class ArticlesController < ApplicationController
         end
     end
 
+    def search
+        @article = Article.find(params[:q])
+        # @article = Article.where("title LIKE ?", "%" + params[:q] + "%")
+    end
+
     def update
         @article = Article.find(params[:id])
         if @article.update(article_params)
